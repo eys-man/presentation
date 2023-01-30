@@ -20,7 +20,117 @@
 				<section>
 					<section>Web audio concepts and usage</section>
 					<section><img src="./examples/assets/graph.png"></img></section>
-					<section>Slide 2.2</section>
+					<section><img src="./examples/assets/audio-context.png"></img></section>
+				</section>
+				<section>
+					<section>All you need to get started...</section>
+					<section>
+						Creating an Audio Context
+							<pre><code data-trim data-noescape class="js">
+								const ctx = new AudioContext();
+								let audio;
+							</code></pre>
+					</section>
+					<section>
+						Fetching an Audio File
+							<pre><code data-trim data-noescape class="js">
+								const ctx = new AudioContext();
+								let audio;
+								fetch("./some-music-file.mp3");
+							</code></pre>
+					</section>
+					<section>
+						Putting the Audio Data Into a Buffer
+							<pre><code data-trim data-noescape class="js">
+								const ctx = new AudioContext();
+								let audio;
+								fetch("./some-music-file.mp3");
+									.then(data => data.arrayBuffer())
+							</code></pre>
+					</section>
+					<section>
+						Decoding the Audio Data
+							<pre><code data-trim data-noescape class="js">
+								const ctx = new AudioContext();
+								let audio;
+								fetch("./some-music-file.mp3");
+									.then(data => data.arrayBuffer())
+									.then(arrayBuffer => ctx.decodeAudioData(arrayBuffer))
+									audio = decodedAudio;
+								})
+							</code></pre>
+					</section>
+					<section>
+						Playing the Sound
+							<pre><code data-trim data-noescape class="js">
+								function playback() {
+									const playSound = ctx.createBufferSource();
+									playSound.buffer = audio;
+									playSound.connect(ctx.destination);
+									playSound.start(ctx.currentTime);
+								}
+							</code></pre>
+					</section>
+				</section>
+				<section>
+					<section data-transition="zoom">Web Audio API interfaces</section>
+					<section>
+						<ul><h4 style="color: aqua">General audio graph definition</h4>
+							<li>AudioContext</li>
+							<li>AudioNode</li>
+							<li>AudioParam</li>
+							<li>AudioParamMap</li>
+							<li>BaseAudioContext</li>
+							<li>The ended event</li>
+						</ul>
+					</section>
+					<section>
+						<ul><h4 style="color: aqua">Defining audio sources</h4>
+							<li>AudioScheduledSourceNode</li>
+							<li>OscillatorNode</li>
+							<li>AudioBuffer</li>
+							<li>AudioBufferSourceNode</li>
+							<li>MediaElementAudioSourceNode</li>
+							<li>MediaStreamAudioSourceNode</li>
+							<li>MediaStreamTrackAudioSourceNode</li>
+						</ul>
+					</section>
+					<section>
+						<ul><h4 style="color: aqua">Defining audio effects filters</h4>
+							<li>BiquadFilterNode</li>
+							<li>ConvolverNode</li>
+							<li>DelayNode</li>
+							<li>DynamicsCompressorNode</li>
+							<li>GainNode</li>
+							<li>WaveShaperNode</li>
+							<li>PeriodicWave</li>
+							<li>IIRFilterNode</li>
+						</ul>
+					</section>
+					<section>
+						<ul><h4 style="color: aqua">Defining audio destinations</h4>
+							<li>AudioDestinationNode</li>
+							<li>MediaStreamAudioDestinationNode</li>
+						</ul>
+					</section>
+					<section>
+						<ul><h4 style="color: aqua">Data analysis and visualization</h4>
+							<li>AnalyserNode</li>
+						</ul>
+					</section>
+					<section>
+						<ul><h4 style="color: aqua">Splitting and merging audio channels</h4>
+							<li>ChannelSplitterNode</li>
+							<li>ChannelMergerNode</li>
+						</ul>
+					</section>
+					<section>
+						<ul><h4 style="color: aqua">Audio spatialization</h4>
+							<li>AudioListener</li>
+							<li>PannerNode</li>
+							<li>StereoPannerNode</li>
+						</ul>
+					</section>
 				</section>
 			</div>
 		</div>
